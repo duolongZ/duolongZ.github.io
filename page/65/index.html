@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/65/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-node_modules/htmlparser2/node_modules/domhandler/test/cases/08-extra_spaces_in_tag" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/htmlparser2/node_modules/domhandler/test/cases/08-extra_spaces_in_tag/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.026Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        {"name":"Extra spaces in tag","options":{},"html":"<font\t\n size='14' \n>the text</\t\nfont\t \n>","expected":[{"type":"tag","name":"font","attribs":{"size":"14"},"children":[{"data":"the text","type":"text"}]}]}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/htmlparser2/node_modules/domhandler/test/cases/08-extra_spaces_in_tag/" data-id="ckjiqr7dq00zkp4un2emvbah2" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/index" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/index/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.026Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        /*
+  Module dependencies
+*/
+var ElementType = require('domelementtype');
+var entities = require('entities');
+
+/* mixed-case SVG and MathML tags & attributes
+   recognized by the HTML parser, see
+   https://html.spec.whatwg.org/multipage/parsing.html#parsing-main-inforeign
+*/
+var foreignNames = require('./foreignNames.json');
+foreignNames.elementNames.__proto__ = null; /* use as a simple dictionary */
+foreignNames.attributeNames.__proto__ = null;
+
+var unencodedElements = {
+  __proto__: null,
+  style: true,
+  script: true,
+  xmp: true,
+  iframe: true,
+  noembed: true,
+  noframes: true,
+  plaintext: true,
+  noscript: true
+};
+
+/*
+  Format attributes
+*/
+function formatAttrs(attributes, opts) {
+  if (!attributes) return;
+
+  var output = '';
+  var value;
+
+  // Loop through the attributes
+  for (var key in attributes) {
+    value = attributes[key];
+    if (output) {
+      output += ' ';
+    }
+
+    if (opts.xmlMode === 'foreign') {
+      /* fix up mixed-case attribute names */
+      key = foreignNames.attributeNames[key] || key;
+    }
+    output += key;
+    if ((value !== null && value !== '') || opts.xmlMode) {
+      output +=
+        '="' +
+        (opts.decodeEntities
+          ? entities.encodeXML(value)
+          : value.replace(/\"/g, '&quot;')) +
+        '"';
+    }
+  }
+
+  return output;
+}
+
+/*
+  Self-enclosing tags (stolen from node-htmlparser)
+*/
+var singleTag = {
+  __proto__: null,
+  area: true,
+  base: true,
+  basefont: true,
+  br: true,
+  col: true,
+  command: true,
+  embed: true,
+  frame: true,
+  hr: true,
+  img: true,
+  input: true,
+  isindex: true,
+  keygen: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true
+};
+
+var render = (module.exports = function(dom, opts) {
+  if (!Array.isArray(dom) && !dom.cheerio) dom = [dom];
+  opts = opts || {};
+
+  var output = '';
+
+  for (var i = 0; i < dom.length; i++) {
+    var elem = dom[i];
+
+    if (elem.type === 'root') output += render(elem.children, opts);
+    else if (ElementType.isTag(elem)) output += renderTag(elem, opts);
+    else if (elem.type === ElementType.Directive)
+      output += renderDirective(elem);
+    else if (elem.type === ElementType.Comment) output += renderComment(elem);
+    else if (elem.type === ElementType.CDATA) output += renderCdata(elem);
+    else output += renderText(elem, opts);
+  }
+
+  return output;
+});
+
+var foreignModeIntegrationPoints = [
+  'mi',
+  'mo',
+  'mn',
+  'ms',
+  'mtext',
+  'annotation-xml',
+  'foreignObject',
+  'desc',
+  'title'
+];
+
+function renderTag(elem, opts) {
+  // Handle SVG / MathML in HTML
+  if (opts.xmlMode === 'foreign') {
+    /* fix up mixed-case element names */
+    elem.name = foreignNames.elementNames[elem.name] || elem.name;
+    /* exit foreign mode at integration points */
+    if (
+      elem.parent &&
+      foreignModeIntegrationPoints.indexOf(elem.parent.name) >= 0
+    )
+      opts = Object.assign({}, opts, { xmlMode: false });
+  }
+  if (!opts.xmlMode && ['svg', 'math'].indexOf(elem.name) >= 0) {
+    opts = Object.assign({}, opts, { xmlMode: 'foreign' });
+  }
+
+  var tag = '<' + elem.name;
+  var attribs = formatAttrs(elem.attribs, opts);
+
+  if (attribs) {
+    tag += ' ' + attribs;
+  }
+
+  if (opts.xmlMode && (!elem.children || elem.children.length === 0)) {
+    tag += '/>';
+  } else {
+    tag += '>';
+    if (elem.children) {
+      tag += render(elem.children, opts);
+    }
+
+    if (!singleTag[elem.name] || opts.xmlMode) {
+      tag += '</' + elem.name + '>';
+    }
+  }
+
+  return tag;
+}
+
+function renderDirective(elem) {
+  return '<' + elem.data + '>';
+}
+
+function renderText(elem, opts) {
+  var data = elem.data || '';
+
+  // if entities weren't decoded, no need to encode them back
+  if (
+    opts.decodeEntities &&
+    !(elem.parent && elem.parent.name in unencodedElements)
+  ) {
+    data = entities.encodeXML(data);
+  }
+
+  return data;
+}
+
+function renderCdata(elem) {
+  return '<![CDATA[' + elem.children[0].data + ']]>';
+}
+
+function renderComment(elem) {
+  return '<!--' + elem.data + '-->';
+}
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/index/" data-id="ckjiqr7dy0103p4un1gpk5jem" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/hexo-asset-image/node_modules/cheerio/node_modules/lodash/internal/wrapperClone" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/lodash/internal/wrapperClone/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.026Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        var LazyWrapper = require('./LazyWrapper'),
+    LodashWrapper = require('./LodashWrapper'),
+    arrayCopy = require('./arrayCopy');
+
+/**
+ * Creates a clone of `wrapper`.
+ *
+ * @private
+ * @param {Object} wrapper The wrapper to clone.
+ * @returns {Object} Returns the cloned wrapper.
+ */
+function wrapperClone(wrapper) {
+  return wrapper instanceof LazyWrapper
+    ? wrapper.clone()
+    : new LodashWrapper(wrapper.__wrapped__, wrapper.__chain__, arrayCopy(wrapper.__actions__));
+}
+
+module.exports = wrapperClone;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/lodash/internal/wrapperClone/" data-id="ckjiqr7k301app4unde7mgslr" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/cheerio/node_modules/htmlparser2/node_modules/domhandler/test/cases/08-extra_spaces_in_tag" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/cheerio/node_modules/htmlparser2/node_modules/domhandler/test/cases/08-extra_spaces_in_tag/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.026Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        {"name":"Extra spaces in tag","options":{},"html":"<font\t\n size='14' \n>the text</\t\nfont\t \n>","expected":[{"type":"tag","name":"font","attribs":{"size":"14"},"children":[{"data":"the text","type":"text"}]}]}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/cheerio/node_modules/htmlparser2/node_modules/domhandler/test/cases/08-extra_spaces_in_tag/" data-id="ckjiqr7ux01e9p4un452t9z30" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/index" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/index/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.026Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        /*
+  Module dependencies
+*/
+var ElementType = require('domelementtype');
+var entities = require('entities');
+
+/* mixed-case SVG and MathML tags & attributes
+   recognized by the HTML parser, see
+   https://html.spec.whatwg.org/multipage/parsing.html#parsing-main-inforeign
+*/
+var foreignNames = require('./foreignNames.json');
+foreignNames.elementNames.__proto__ = null; /* use as a simple dictionary */
+foreignNames.attributeNames.__proto__ = null;
+
+var unencodedElements = {
+  __proto__: null,
+  style: true,
+  script: true,
+  xmp: true,
+  iframe: true,
+  noembed: true,
+  noframes: true,
+  plaintext: true,
+  noscript: true
+};
+
+/*
+  Format attributes
+*/
+function formatAttrs(attributes, opts) {
+  if (!attributes) return;
+
+  var output = '';
+  var value;
+
+  // Loop through the attributes
+  for (var key in attributes) {
+    value = attributes[key];
+    if (output) {
+      output += ' ';
+    }
+
+    if (opts.xmlMode === 'foreign') {
+      /* fix up mixed-case attribute names */
+      key = foreignNames.attributeNames[key] || key;
+    }
+    output += key;
+    if ((value !== null && value !== '') || opts.xmlMode) {
+      output +=
+        '="' +
+        (opts.decodeEntities
+          ? entities.encodeXML(value)
+          : value.replace(/\"/g, '&quot;')) +
+        '"';
+    }
+  }
+
+  return output;
+}
+
+/*
+  Self-enclosing tags (stolen from node-htmlparser)
+*/
+var singleTag = {
+  __proto__: null,
+  area: true,
+  base: true,
+  basefont: true,
+  br: true,
+  col: true,
+  command: true,
+  embed: true,
+  frame: true,
+  hr: true,
+  img: true,
+  input: true,
+  isindex: true,
+  keygen: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true
+};
+
+var render = (module.exports = function(dom, opts) {
+  if (!Array.isArray(dom) && !dom.cheerio) dom = [dom];
+  opts = opts || {};
+
+  var output = '';
+
+  for (var i = 0; i < dom.length; i++) {
+    var elem = dom[i];
+
+    if (elem.type === 'root') output += render(elem.children, opts);
+    else if (ElementType.isTag(elem)) output += renderTag(elem, opts);
+    else if (elem.type === ElementType.Directive)
+      output += renderDirective(elem);
+    else if (elem.type === ElementType.Comment) output += renderComment(elem);
+    else if (elem.type === ElementType.CDATA) output += renderCdata(elem);
+    else output += renderText(elem, opts);
+  }
+
+  return output;
+});
+
+var foreignModeIntegrationPoints = [
+  'mi',
+  'mo',
+  'mn',
+  'ms',
+  'mtext',
+  'annotation-xml',
+  'foreignObject',
+  'desc',
+  'title'
+];
+
+function renderTag(elem, opts) {
+  // Handle SVG / MathML in HTML
+  if (opts.xmlMode === 'foreign') {
+    /* fix up mixed-case element names */
+    elem.name = foreignNames.elementNames[elem.name] || elem.name;
+    /* exit foreign mode at integration points */
+    if (
+      elem.parent &&
+      foreignModeIntegrationPoints.indexOf(elem.parent.name) >= 0
+    )
+      opts = Object.assign({}, opts, { xmlMode: false });
+  }
+  if (!opts.xmlMode && ['svg', 'math'].indexOf(elem.name) >= 0) {
+    opts = Object.assign({}, opts, { xmlMode: 'foreign' });
+  }
+
+  var tag = '<' + elem.name;
+  var attribs = formatAttrs(elem.attribs, opts);
+
+  if (attribs) {
+    tag += ' ' + attribs;
+  }
+
+  if (opts.xmlMode && (!elem.children || elem.children.length === 0)) {
+    tag += '/>';
+  } else {
+    tag += '>';
+    if (elem.children) {
+      tag += render(elem.children, opts);
+    }
+
+    if (!singleTag[elem.name] || opts.xmlMode) {
+      tag += '</' + elem.name + '>';
+    }
+  }
+
+  return tag;
+}
+
+function renderDirective(elem) {
+  return '<' + elem.data + '>';
+}
+
+function renderText(elem, opts) {
+  var data = elem.data || '';
+
+  // if entities weren't decoded, no need to encode them back
+  if (
+    opts.decodeEntities &&
+    !(elem.parent && elem.parent.name in unencodedElements)
+  ) {
+    data = entities.encodeXML(data);
+  }
+
+  return data;
+}
+
+function renderCdata(elem) {
+  return '<![CDATA[' + elem.children[0].data + ']]>';
+}
+
+function renderComment(elem) {
+  return '<!--' + elem.data + '-->';
+}
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/index/" data-id="ckjiqr7v501esp4un5eugen6o" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/hexo-asset-image/node_modules/cheerio/node_modules/htmlparser2/node_modules/domhandler/test/cases/08-extra_spaces_in_tag" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/htmlparser2/node_modules/domhandler/test/cases/08-extra_spaces_in_tag/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.026Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        {"name":"Extra spaces in tag","options":{},"html":"<font\t\n size='14' \n>the text</\t\nfont\t \n>","expected":[{"type":"tag","name":"font","attribs":{"size":"14"},"children":[{"data":"the text","type":"text"}]}]}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/htmlparser2/node_modules/domhandler/test/cases/08-extra_spaces_in_tag/" data-id="ckjiqr7xk01jcp4uncgpn0nap" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/hexo-asset-image/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/index" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/index/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.026Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        /*
+  Module dependencies
+*/
+var ElementType = require('domelementtype');
+var entities = require('entities');
+
+/* mixed-case SVG and MathML tags & attributes
+   recognized by the HTML parser, see
+   https://html.spec.whatwg.org/multipage/parsing.html#parsing-main-inforeign
+*/
+var foreignNames = require('./foreignNames.json');
+foreignNames.elementNames.__proto__ = null; /* use as a simple dictionary */
+foreignNames.attributeNames.__proto__ = null;
+
+var unencodedElements = {
+  __proto__: null,
+  style: true,
+  script: true,
+  xmp: true,
+  iframe: true,
+  noembed: true,
+  noframes: true,
+  plaintext: true,
+  noscript: true
+};
+
+/*
+  Format attributes
+*/
+function formatAttrs(attributes, opts) {
+  if (!attributes) return;
+
+  var output = '';
+  var value;
+
+  // Loop through the attributes
+  for (var key in attributes) {
+    value = attributes[key];
+    if (output) {
+      output += ' ';
+    }
+
+    if (opts.xmlMode === 'foreign') {
+      /* fix up mixed-case attribute names */
+      key = foreignNames.attributeNames[key] || key;
+    }
+    output += key;
+    if ((value !== null && value !== '') || opts.xmlMode) {
+      output +=
+        '="' +
+        (opts.decodeEntities
+          ? entities.encodeXML(value)
+          : value.replace(/\"/g, '&quot;')) +
+        '"';
+    }
+  }
+
+  return output;
+}
+
+/*
+  Self-enclosing tags (stolen from node-htmlparser)
+*/
+var singleTag = {
+  __proto__: null,
+  area: true,
+  base: true,
+  basefont: true,
+  br: true,
+  col: true,
+  command: true,
+  embed: true,
+  frame: true,
+  hr: true,
+  img: true,
+  input: true,
+  isindex: true,
+  keygen: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true
+};
+
+var render = (module.exports = function(dom, opts) {
+  if (!Array.isArray(dom) && !dom.cheerio) dom = [dom];
+  opts = opts || {};
+
+  var output = '';
+
+  for (var i = 0; i < dom.length; i++) {
+    var elem = dom[i];
+
+    if (elem.type === 'root') output += render(elem.children, opts);
+    else if (ElementType.isTag(elem)) output += renderTag(elem, opts);
+    else if (elem.type === ElementType.Directive)
+      output += renderDirective(elem);
+    else if (elem.type === ElementType.Comment) output += renderComment(elem);
+    else if (elem.type === ElementType.CDATA) output += renderCdata(elem);
+    else output += renderText(elem, opts);
+  }
+
+  return output;
+});
+
+var foreignModeIntegrationPoints = [
+  'mi',
+  'mo',
+  'mn',
+  'ms',
+  'mtext',
+  'annotation-xml',
+  'foreignObject',
+  'desc',
+  'title'
+];
+
+function renderTag(elem, opts) {
+  // Handle SVG / MathML in HTML
+  if (opts.xmlMode === 'foreign') {
+    /* fix up mixed-case element names */
+    elem.name = foreignNames.elementNames[elem.name] || elem.name;
+    /* exit foreign mode at integration points */
+    if (
+      elem.parent &&
+      foreignModeIntegrationPoints.indexOf(elem.parent.name) >= 0
+    )
+      opts = Object.assign({}, opts, { xmlMode: false });
+  }
+  if (!opts.xmlMode && ['svg', 'math'].indexOf(elem.name) >= 0) {
+    opts = Object.assign({}, opts, { xmlMode: 'foreign' });
+  }
+
+  var tag = '<' + elem.name;
+  var attribs = formatAttrs(elem.attribs, opts);
+
+  if (attribs) {
+    tag += ' ' + attribs;
+  }
+
+  if (opts.xmlMode && (!elem.children || elem.children.length === 0)) {
+    tag += '/>';
+  } else {
+    tag += '>';
+    if (elem.children) {
+      tag += render(elem.children, opts);
+    }
+
+    if (!singleTag[elem.name] || opts.xmlMode) {
+      tag += '</' + elem.name + '>';
+    }
+  }
+
+  return tag;
+}
+
+function renderDirective(elem) {
+  return '<' + elem.data + '>';
+}
+
+function renderText(elem, opts) {
+  var data = elem.data || '';
+
+  // if entities weren't decoded, no need to encode them back
+  if (
+    opts.decodeEntities &&
+    !(elem.parent && elem.parent.name in unencodedElements)
+  ) {
+    data = entities.encodeXML(data);
+  }
+
+  return data;
+}
+
+function renderCdata(elem) {
+  return '<![CDATA[' + elem.children[0].data + ']]>';
+}
+
+function renderComment(elem) {
+  return '<!--' + elem.data + '-->';
+}
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/index/" data-id="ckjiqr7xs01jvp4un8q6t1zpg" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/lodash/internal/LodashWrapper" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/lodash/internal/LodashWrapper/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.025Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        var baseCreate = require('./baseCreate'),
+    baseLodash = require('./baseLodash');
+
+/**
+ * The base constructor for creating `lodash` wrapper objects.
+ *
+ * @private
+ * @param {*} value The value to wrap.
+ * @param {boolean} [chainAll] Enable chaining for all wrapper methods.
+ * @param {Array} [actions=[]] Actions to peform to resolve the unwrapped value.
+ */
+function LodashWrapper(value, chainAll, actions) {
+  this.__wrapped__ = value;
+  this.__actions__ = actions || [];
+  this.__chain__ = !!chainAll;
+}
+
+LodashWrapper.prototype = baseCreate(baseLodash.prototype);
+LodashWrapper.prototype.constructor = LodashWrapper;
+
+module.exports = LodashWrapper;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/lodash/internal/LodashWrapper/" data-id="ckjiqr6w1006sp4un083s4sj8" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/lodash/internal/unescapeHtmlChar" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/lodash/internal/unescapeHtmlChar/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.025Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        /** Used to map HTML entities to characters. */
+var htmlUnescapes = {
+  '&amp;': '&',
+  '&lt;': '<',
+  '&gt;': '>',
+  '&quot;': '"',
+  '&#39;': "'",
+  '&#96;': '`'
+};
+
+/**
+ * Used by `_.unescape` to convert HTML entities to characters.
+ *
+ * @private
+ * @param {string} chr The matched character to unescape.
+ * @returns {string} Returns the unescaped character.
+ */
+function unescapeHtmlChar(chr) {
+  return htmlUnescapes[chr];
+}
+
+module.exports = unescapeHtmlChar;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/lodash/internal/unescapeHtmlChar/" data-id="ckjiqr6z300bcp4unes4sbqn8" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/domhandler/test/cases/06-comment_in_script" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/domhandler/test/cases/06-comment_in_script/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.025Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        {"name":"Script source in comment","options":{},"html":"<script><!--var foo = 1;--></script>","expected":[{"type":"script","name":"script","attribs":{},"children":[{"data":"<!--var foo = 1;-->","type":"text"}]}]}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/domhandler/test/cases/06-comment_in_script/" data-id="ckjiqr72c00fup4un0uonc63x" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/64/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/63/">63</a><a class="page-number" href="/page/64/">64</a><span class="page-number current">65</span><a class="page-number" href="/page/66/">66</a><a class="page-number" href="/page/67/">67</a><span class="space">&hellip;</span><a class="page-number" href="/page/210/">210</a><a class="extend next" rel="next" href="/page/66/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/04/package/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/04/node_modules/core-util-is/package/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/04/node_modules/readable-stream/node_modules/core-util-is/package/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/04/node_modules/htmlparser2/node_modules/readable-stream/node_modules/core-util-is/package/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/04/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/node_modules/core-util-is/package/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

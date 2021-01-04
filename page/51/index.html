@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/51/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/package" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/package/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.051Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        {"name":"dom-serializer","version":"0.2.2","description":"render dom nodes to string","author":"Felix Boehm <me@feedic.com>","keywords":["html","xml","render"],"repository":{"type":"git","url":"git://github.com/cheeriojs/dom-renderer.git"},"main":"./index.js","files":["index.js","index.d.ts","foreignNames.json"],"dependencies":{"domelementtype":"^2.0.1","entities":"^2.0.0"},"devDependencies":{"cheerio":"^1.0.0-rc.2","expect.js":"~0.3.1","htmlparser2":"^3.10.0","lodash":"^4.17.11","mocha":"^6.2.0","xyz":"^3.0.0"},"scripts":{"test":"mocha test.js"},"prettier":{"singleQuote":true},"license":"MIT","__npminstall_done":"Mon Jan 04 2021 23:49:39 GMT+0800 (China Standard Time)","_from":"dom-serializer@0.2.2","_resolved":"https://registry.npm.taobao.org/dom-serializer/download/dom-serializer-0.2.2.tgz?cache=0&sync_timestamp=1607192957140&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdom-serializer%2Fdownload%2Fdom-serializer-0.2.2.tgz"}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/package/" data-id="ckjiqr7dy0104p4un973fayqt" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/hexo-asset-image/node_modules/cheerio/node_modules/lodash/string/deburr" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/lodash/string/deburr/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.051Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        var baseToString = require('../internal/baseToString'),
+    deburrLetter = require('../internal/deburrLetter');
+
+/** Used to match [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks). */
+var reComboMark = /[\u0300-\u036f\ufe20-\ufe23]/g;
+
+/** Used to match latin-1 supplementary letters (excluding mathematical operators). */
+var reLatin1 = /[\xc0-\xd6\xd8-\xde\xdf-\xf6\xf8-\xff]/g;
+
+/**
+ * Deburrs `string` by converting [latin-1 supplementary letters](https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)#Character_table)
+ * to basic latin letters and removing [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks).
+ *
+ * @static
+ * @memberOf _
+ * @category String
+ * @param {string} [string=''] The string to deburr.
+ * @returns {string} Returns the deburred string.
+ * @example
+ *
+ * _.deburr('déjà vu');
+ * // => 'deja vu'
+ */
+function deburr(string) {
+  string = baseToString(string);
+  return string && string.replace(reLatin1, deburrLetter).replace(reComboMark, '');
+}
+
+module.exports = deburr;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/lodash/string/deburr/" data-id="ckjiqr7tv01cop4un2yg76jk7" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/package" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/package/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.051Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        {"name":"dom-serializer","version":"0.2.2","description":"render dom nodes to string","author":"Felix Boehm <me@feedic.com>","keywords":["html","xml","render"],"repository":{"type":"git","url":"git://github.com/cheeriojs/dom-renderer.git"},"main":"./index.js","files":["index.js","index.d.ts","foreignNames.json"],"dependencies":{"domelementtype":"^2.0.1","entities":"^2.0.0"},"devDependencies":{"cheerio":"^1.0.0-rc.2","expect.js":"~0.3.1","htmlparser2":"^3.10.0","lodash":"^4.17.11","mocha":"^6.2.0","xyz":"^3.0.0"},"scripts":{"test":"mocha test.js"},"prettier":{"singleQuote":true},"license":"MIT","__npminstall_done":"Mon Jan 04 2021 23:49:39 GMT+0800 (China Standard Time)","_from":"dom-serializer@0.2.2","_resolved":"https://registry.npm.taobao.org/dom-serializer/download/dom-serializer-0.2.2.tgz?cache=0&sync_timestamp=1607192957140&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdom-serializer%2Fdownload%2Fdom-serializer-0.2.2.tgz"}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/package/" data-id="ckjiqr7v601etp4unbuqdfv30" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/hexo-asset-image/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/package" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/package/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.051Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        {"name":"dom-serializer","version":"0.2.2","description":"render dom nodes to string","author":"Felix Boehm <me@feedic.com>","keywords":["html","xml","render"],"repository":{"type":"git","url":"git://github.com/cheeriojs/dom-renderer.git"},"main":"./index.js","files":["index.js","index.d.ts","foreignNames.json"],"dependencies":{"domelementtype":"^2.0.1","entities":"^2.0.0"},"devDependencies":{"cheerio":"^1.0.0-rc.2","expect.js":"~0.3.1","htmlparser2":"^3.10.0","lodash":"^4.17.11","mocha":"^6.2.0","xyz":"^3.0.0"},"scripts":{"test":"mocha test.js"},"prettier":{"singleQuote":true},"license":"MIT","__npminstall_done":"Mon Jan 04 2021 23:49:39 GMT+0800 (China Standard Time)","_from":"dom-serializer@0.2.2","_resolved":"https://registry.npm.taobao.org/dom-serializer/download/dom-serializer-0.2.2.tgz?cache=0&sync_timestamp=1607192957140&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdom-serializer%2Fdownload%2Fdom-serializer-0.2.2.tgz"}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/hexo-asset-image/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/node_modules/dom-serializer/package/" data-id="ckjiqr7xt01jwp4un3nrbebp6" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/lodash/string/endsWith" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/lodash/string/endsWith/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.050Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        var baseToString = require('../internal/baseToString');
+
+/* Native method references for those with the same name as other `lodash` methods. */
+var nativeMin = Math.min;
+
+/**
+ * Checks if `string` ends with the given target string.
+ *
+ * @static
+ * @memberOf _
+ * @category String
+ * @param {string} [string=''] The string to search.
+ * @param {string} [target] The string to search for.
+ * @param {number} [position=string.length] The position to search from.
+ * @returns {boolean} Returns `true` if `string` ends with `target`, else `false`.
+ * @example
+ *
+ * _.endsWith('abc', 'c');
+ * // => true
+ *
+ * _.endsWith('abc', 'b');
+ * // => false
+ *
+ * _.endsWith('abc', 'b', 2);
+ * // => true
+ */
+function endsWith(string, target, position) {
+  string = baseToString(string);
+  target = (target + '');
+
+  var length = string.length;
+  position = position === undefined
+    ? length
+    : nativeMin(position < 0 ? 0 : (+position || 0), length);
+
+  position -= target.length;
+  return position >= 0 && string.indexOf(target, position) == position;
+}
+
+module.exports = endsWith;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/lodash/string/endsWith/" data-id="ckjiqr70l00ddp4unhghg35mc" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/lodash/string/trimRight" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/lodash/string/trimRight/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.050Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        var baseToString = require('../internal/baseToString'),
+    charsRightIndex = require('../internal/charsRightIndex'),
+    isIterateeCall = require('../internal/isIterateeCall'),
+    trimmedRightIndex = require('../internal/trimmedRightIndex');
+
+/**
+ * Removes trailing whitespace or specified characters from `string`.
+ *
+ * @static
+ * @memberOf _
+ * @category String
+ * @param {string} [string=''] The string to trim.
+ * @param {string} [chars=whitespace] The characters to trim.
+ * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
+ * @returns {string} Returns the trimmed string.
+ * @example
+ *
+ * _.trimRight('  abc  ');
+ * // => '  abc'
+ *
+ * _.trimRight('-_-abc-_-', '_-');
+ * // => '-_-abc'
+ */
+function trimRight(string, chars, guard) {
+  var value = string;
+  string = baseToString(string);
+  if (!string) {
+    return string;
+  }
+  if (guard ? isIterateeCall(value, chars, guard) : chars == null) {
+    return string.slice(0, trimmedRightIndex(string) + 1);
+  }
+  return string.slice(0, charsRightIndex(string, (chars + '')) + 1);
+}
+
+module.exports = trimRight;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/lodash/string/trimRight/" data-id="ckjiqr71500dtp4unhmsc7pje" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/lodash/string/trunc" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/lodash/string/trunc/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.050Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        var baseToString = require('../internal/baseToString'),
+    isIterateeCall = require('../internal/isIterateeCall'),
+    isObject = require('../lang/isObject'),
+    isRegExp = require('../lang/isRegExp');
+
+/** Used as default options for `_.trunc`. */
+var DEFAULT_TRUNC_LENGTH = 30,
+    DEFAULT_TRUNC_OMISSION = '...';
+
+/** Used to match `RegExp` flags from their coerced string values. */
+var reFlags = /\w*$/;
+
+/**
+ * Truncates `string` if it's longer than the given maximum string length.
+ * The last characters of the truncated string are replaced with the omission
+ * string which defaults to "...".
+ *
+ * @static
+ * @memberOf _
+ * @category String
+ * @param {string} [string=''] The string to truncate.
+ * @param {Object|number} [options] The options object or maximum string length.
+ * @param {number} [options.length=30] The maximum string length.
+ * @param {string} [options.omission='...'] The string to indicate text is omitted.
+ * @param {RegExp|string} [options.separator] The separator pattern to truncate to.
+ * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
+ * @returns {string} Returns the truncated string.
+ * @example
+ *
+ * _.trunc('hi-diddly-ho there, neighborino');
+ * // => 'hi-diddly-ho there, neighbo...'
+ *
+ * _.trunc('hi-diddly-ho there, neighborino', 24);
+ * // => 'hi-diddly-ho there, n...'
+ *
+ * _.trunc('hi-diddly-ho there, neighborino', {
+ *   'length': 24,
+ *   'separator': ' '
+ * });
+ * // => 'hi-diddly-ho there,...'
+ *
+ * _.trunc('hi-diddly-ho there, neighborino', {
+ *   'length': 24,
+ *   'separator': /,? +/
+ * });
+ * // => 'hi-diddly-ho there...'
+ *
+ * _.trunc('hi-diddly-ho there, neighborino', {
+ *   'omission': ' [...]'
+ * });
+ * // => 'hi-diddly-ho there, neig [...]'
+ */
+function trunc(string, options, guard) {
+  if (guard && isIterateeCall(string, options, guard)) {
+    options = undefined;
+  }
+  var length = DEFAULT_TRUNC_LENGTH,
+      omission = DEFAULT_TRUNC_OMISSION;
+
+  if (options != null) {
+    if (isObject(options)) {
+      var separator = 'separator' in options ? options.separator : separator;
+      length = 'length' in options ? (+options.length || 0) : length;
+      omission = 'omission' in options ? baseToString(options.omission) : omission;
+    } else {
+      length = +options || 0;
+    }
+  }
+  string = baseToString(string);
+  if (length >= string.length) {
+    return string;
+  }
+  var end = length - omission.length;
+  if (end < 1) {
+    return omission;
+  }
+  var result = string.slice(0, end);
+  if (separator == null) {
+    return result + omission;
+  }
+  if (isRegExp(separator)) {
+    if (string.slice(end).search(separator)) {
+      var match,
+          newEnd,
+          substring = string.slice(0, end);
+
+      if (!separator.global) {
+        separator = RegExp(separator.source, (reFlags.exec(separator) || '') + 'g');
+      }
+      separator.lastIndex = 0;
+      while ((match = separator.exec(substring))) {
+        newEnd = match.index;
+      }
+      result = result.slice(0, newEnd == null ? end : newEnd);
+    }
+  } else if (string.indexOf(separator, end) != end) {
+    var index = result.lastIndexOf(separator);
+    if (index > -1) {
+      result = result.slice(0, index);
+    }
+  }
+  return result + omission;
+}
+
+module.exports = trunc;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/lodash/string/trunc/" data-id="ckjiqr71500dup4undo659b0x" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/cheerio/node_modules/lodash/string/endsWith" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/cheerio/node_modules/lodash/string/endsWith/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.050Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        var baseToString = require('../internal/baseToString');
+
+/* Native method references for those with the same name as other `lodash` methods. */
+var nativeMin = Math.min;
+
+/**
+ * Checks if `string` ends with the given target string.
+ *
+ * @static
+ * @memberOf _
+ * @category String
+ * @param {string} [string=''] The string to search.
+ * @param {string} [target] The string to search for.
+ * @param {number} [position=string.length] The position to search from.
+ * @returns {boolean} Returns `true` if `string` ends with `target`, else `false`.
+ * @example
+ *
+ * _.endsWith('abc', 'c');
+ * // => true
+ *
+ * _.endsWith('abc', 'b');
+ * // => false
+ *
+ * _.endsWith('abc', 'b', 2);
+ * // => true
+ */
+function endsWith(string, target, position) {
+  string = baseToString(string);
+  target = (target + '');
+
+  var length = string.length;
+  position = position === undefined
+    ? length
+    : nativeMin(position < 0 ? 0 : (+position || 0), length);
+
+  position -= target.length;
+  return position >= 0 && string.indexOf(target, position) == position;
+}
+
+module.exports = endsWith;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/cheerio/node_modules/lodash/string/endsWith/" data-id="ckjiqr7ai00tup4une4oz7dej" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/cheerio/node_modules/lodash/string/trimRight" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/cheerio/node_modules/lodash/string/trimRight/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.050Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        var baseToString = require('../internal/baseToString'),
+    charsRightIndex = require('../internal/charsRightIndex'),
+    isIterateeCall = require('../internal/isIterateeCall'),
+    trimmedRightIndex = require('../internal/trimmedRightIndex');
+
+/**
+ * Removes trailing whitespace or specified characters from `string`.
+ *
+ * @static
+ * @memberOf _
+ * @category String
+ * @param {string} [string=''] The string to trim.
+ * @param {string} [chars=whitespace] The characters to trim.
+ * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
+ * @returns {string} Returns the trimmed string.
+ * @example
+ *
+ * _.trimRight('  abc  ');
+ * // => '  abc'
+ *
+ * _.trimRight('-_-abc-_-', '_-');
+ * // => '-_-abc'
+ */
+function trimRight(string, chars, guard) {
+  var value = string;
+  string = baseToString(string);
+  if (!string) {
+    return string;
+  }
+  if (guard ? isIterateeCall(value, chars, guard) : chars == null) {
+    return string.slice(0, trimmedRightIndex(string) + 1);
+  }
+  return string.slice(0, charsRightIndex(string, (chars + '')) + 1);
+}
+
+module.exports = trimRight;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/cheerio/node_modules/lodash/string/trimRight/" data-id="ckjiqr7aq00uap4uncioq90ds" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-node_modules/cheerio/node_modules/lodash/string/trunc" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/node_modules/cheerio/node_modules/lodash/string/trunc/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T15:49:39.050Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        var baseToString = require('../internal/baseToString'),
+    isIterateeCall = require('../internal/isIterateeCall'),
+    isObject = require('../lang/isObject'),
+    isRegExp = require('../lang/isRegExp');
+
+/** Used as default options for `_.trunc`. */
+var DEFAULT_TRUNC_LENGTH = 30,
+    DEFAULT_TRUNC_OMISSION = '...';
+
+/** Used to match `RegExp` flags from their coerced string values. */
+var reFlags = /\w*$/;
+
+/**
+ * Truncates `string` if it's longer than the given maximum string length.
+ * The last characters of the truncated string are replaced with the omission
+ * string which defaults to "...".
+ *
+ * @static
+ * @memberOf _
+ * @category String
+ * @param {string} [string=''] The string to truncate.
+ * @param {Object|number} [options] The options object or maximum string length.
+ * @param {number} [options.length=30] The maximum string length.
+ * @param {string} [options.omission='...'] The string to indicate text is omitted.
+ * @param {RegExp|string} [options.separator] The separator pattern to truncate to.
+ * @param- {Object} [guard] Enables use as a callback for functions like `_.map`.
+ * @returns {string} Returns the truncated string.
+ * @example
+ *
+ * _.trunc('hi-diddly-ho there, neighborino');
+ * // => 'hi-diddly-ho there, neighbo...'
+ *
+ * _.trunc('hi-diddly-ho there, neighborino', 24);
+ * // => 'hi-diddly-ho there, n...'
+ *
+ * _.trunc('hi-diddly-ho there, neighborino', {
+ *   'length': 24,
+ *   'separator': ' '
+ * });
+ * // => 'hi-diddly-ho there,...'
+ *
+ * _.trunc('hi-diddly-ho there, neighborino', {
+ *   'length': 24,
+ *   'separator': /,? +/
+ * });
+ * // => 'hi-diddly-ho there...'
+ *
+ * _.trunc('hi-diddly-ho there, neighborino', {
+ *   'omission': ' [...]'
+ * });
+ * // => 'hi-diddly-ho there, neig [...]'
+ */
+function trunc(string, options, guard) {
+  if (guard && isIterateeCall(string, options, guard)) {
+    options = undefined;
+  }
+  var length = DEFAULT_TRUNC_LENGTH,
+      omission = DEFAULT_TRUNC_OMISSION;
+
+  if (options != null) {
+    if (isObject(options)) {
+      var separator = 'separator' in options ? options.separator : separator;
+      length = 'length' in options ? (+options.length || 0) : length;
+      omission = 'omission' in options ? baseToString(options.omission) : omission;
+    } else {
+      length = +options || 0;
+    }
+  }
+  string = baseToString(string);
+  if (length >= string.length) {
+    return string;
+  }
+  var end = length - omission.length;
+  if (end < 1) {
+    return omission;
+  }
+  var result = string.slice(0, end);
+  if (separator == null) {
+    return result + omission;
+  }
+  if (isRegExp(separator)) {
+    if (string.slice(end).search(separator)) {
+      var match,
+          newEnd,
+          substring = string.slice(0, end);
+
+      if (!separator.global) {
+        separator = RegExp(separator.source, (reFlags.exec(separator) || '') + 'g');
+      }
+      separator.lastIndex = 0;
+      while ((match = separator.exec(substring))) {
+        newEnd = match.index;
+      }
+      result = result.slice(0, newEnd == null ? end : newEnd);
+    }
+  } else if (string.indexOf(separator, end) != end) {
+    var index = result.lastIndexOf(separator);
+    if (index > -1) {
+      result = result.slice(0, index);
+    }
+  }
+  return result + omission;
+}
+
+module.exports = trunc;
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/node_modules/cheerio/node_modules/lodash/string/trunc/" data-id="ckjiqr7aq00ubp4un3xith22c" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/50/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/53/">53</a><span class="space">&hellip;</span><a class="page-number" href="/page/210/">210</a><a class="extend next" rel="next" href="/page/52/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/04/package/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/04/node_modules/core-util-is/package/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/04/node_modules/readable-stream/node_modules/core-util-is/package/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/04/node_modules/htmlparser2/node_modules/readable-stream/node_modules/core-util-is/package/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/04/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/node_modules/core-util-is/package/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
